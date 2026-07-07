@@ -32,7 +32,7 @@ const Navbar = () => {
                 <div className="storefront-actions">
 
                     {/* Botón Discreto de Vista Administrador */}
-                    <Link to="/admin-login" className="admin-ghost-btn" title="Acceso exclusivo para personal">
+                    <Link to="https://admin.sistematextil.pp.ua" className="admin-ghost-btn" title="Acceso exclusivo para personal">
                         <Shield size={14} />
                         <span>Admin</span>
                     </Link>
