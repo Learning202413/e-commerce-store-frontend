@@ -1,0 +1,1079 @@
+/* =========================================
+   Login del Comprador (Storefront Login) - CORREGIDO
+   ========================================= */
+
+.storefront-login-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Ocupa el espacio restante sin forzar un alto fijo */
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem; /* Espaciado exterior para evitar que choque en móviles */
+    background-color: var(--bg-surface);
+    /* Asegura que no haya scroll si el contenido cabe en la pantalla */
+    min-height: auto;
+}
+
+.storefront-login-card {
+    background: var(--bg-color);
+    width: 100%;
+    max-width: 480px; /* Un poco más ancho para que respiren los inputs */
+    padding: 4rem 3.5rem; /* Aumentamos el "aire" interior (padding) */
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md); /* Una sombra ligeramente más definida */
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 3rem; /* Más espacio entre el título y el primer input */
+}
+
+.login-header h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.login-header p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Espaciado de los campos del formulario */
+.form-group {
+    margin-bottom: 1.75rem; /* Separación clara entre Usuario y Contraseña */
+}
+
+/* Inputs con Íconos */
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-icon .icon {
+    position: absolute;
+    left: 1rem;
+    color: var(--text-muted);
+}
+
+.input-with-icon input {
+    padding: 0.9rem 1rem 0.9rem 3rem; /* Ajuste de altura del input */
+}
+
+/* Detalles de UX - Corregido el solapamiento */
+.forgot-password {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.5rem; /* Separación positiva, ¡adiós al margen negativo! */
+    margin-bottom: 2.5rem; /* Mucho espacio antes del botón principal */
+}
+
+.forgot-password a {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+}
+
+.forgot-password a:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
+}
+
+/* Botón Principal */
+.login-submit-btn {
+    width: 100%;
+    padding: 1.1rem; /* Botón un poco más alto, transmite calidad */
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+}
+
+/* Alerta de Error Minimalista */
+.storefront-alert {
+    background-color: transparent;
+    color: var(--danger);
+    border: 1px solid var(--danger);
+    padding: 0.8rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 2rem;
+    font-size: 0.85rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Footer del Login */
+.login-footer {
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 2rem;
+}
+
+.login-footer p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.login-footer a {
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-left: 0.25rem;
+}
+
+/* Ajustes para móviles */
+@media (max-width: 480px) {
+    .storefront-login-wrapper {
+        padding: 0; /* Quitamos padding externo */
+        background: var(--bg-color); /* Fondo blanco en móvil completo */
+    }
+    .storefront-login-card {
+        padding: 2.5rem 1.5rem;
+        border: none;
+        box-shadow: none;
+    }
+}
+
+
+/* =========================================
+   Bolsa de Compras (Cart Storefront)
+   ========================================= */
+
+.cart-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+    border-bottom: 2px solid var(--text-primary);
+    padding-bottom: 1rem;
+}
+
+.cart-header h1 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+}
+
+.cart-count {
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+/* Layout del Carrito (Responsive Grid) */
+.cart-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+@media (min-width: 1024px) {
+    .cart-layout {
+        grid-template-columns: 1fr 380px; /* Columna principal amplia, Sidebar fijo a la derecha */
+    }
+}
+
+/* Tarjetas de Producto en el Carrito */
+.cart-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.cart-item-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    transition: border-color var(--transition-fast);
+}
+
+.cart-item-card:hover {
+    border-color: var(--text-muted);
+}
+
+.item-details h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.25rem;
+}
+
+.item-meta {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.item-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.item-price {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+/* Botón papelera sutil */
+.btn-icon.remove {
+    background: transparent;
+    color: var(--text-muted);
+    padding: 0.5rem;
+    border-radius: 50%;
+}
+
+.btn-icon.remove:hover {
+    background: var(--danger);
+    color: white;
+}
+
+/* Sidebar Resumen de Orden */
+.cart-summary-sidebar {
+    position: sticky;
+    top: 100px; /* Se queda fijo al hacer scroll (Genial UX) */
+}
+
+.summary-card {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+}
+
+.summary-card h3 {
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.summary-row.total {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.total-price {
+    font-size: 1.5rem;
+}
+
+.summary-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin-bottom: 2rem;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 1.1rem;
+    font-size: 1rem;
+}
+
+/* =========================================
+   Página de Producto (Product Detail Page)
+   ========================================= */
+
+.breadcrumb {
+    margin-bottom: 3rem;
+}
+
+.breadcrumb a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.breadcrumb a:hover {
+    color: var(--text-primary);
+}
+
+/* Layout Principal (Foto Izquierda / Info Derecha) */
+.product-detail-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-bottom: 5rem;
+}
+
+@media (min-width: 900px) {
+    .product-detail-layout {
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem; /* Mucho espacio en blanco, clave en moda */
+        align-items: flex-start;
+    }
+}
+
+/* Imagen del Producto */
+.product-image-large {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4; /* Aspect Ratio de Moda */
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+/* Placeholder elegante */
+.image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    font-weight: 300;
+    color: var(--border-color); /* Color muy sutil */
+    letter-spacing: -0.05em;
+}
+
+/* Panel de Información */
+.product-info-panel h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+.product-price-large {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+}
+
+.product-description {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border-color); /* Línea divisoria elegante */
+}
+
+.product-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    font-size: 0.95rem;
+}
+
+.meta-label {
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.text-danger { color: var(--danger); font-weight: 600; }
+
+/* Botón Añadir a la Bolsa */
+.add-to-cart-btn {
+    width: 100%;
+    padding: 1.25rem;
+    font-size: 1.1rem;
+}
+
+.add-to-cart-btn.disabled {
+    background-color: var(--bg-surface-hover);
+    color: var(--text-muted);
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* SECCIÓN DE RESEÑAS */
+.reviews-section {
+    border-top: 2px solid var(--text-primary);
+    padding-top: 4rem;
+}
+
+.reviews-section h2 {
+    font-size: 1.75rem;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.reviews-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+}
+
+@media (min-width: 900px) {
+    .reviews-layout {
+        grid-template-columns: 350px 1fr; /* Formulario a la izquierda, lista a la derecha */
+    }
+}
+
+.review-form-container h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Cajas de Aviso (Login o Pedidos) */
+.review-notice {
+    background-color: var(--bg-surface);
+    padding: 2rem;
+    border-radius: var(--radius-sm);
+    text-align: center;
+}
+
+.review-notice p {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-small { padding: 0.6rem 1rem; font-size: 0.85rem; }
+
+.star-rating {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.submit-review-btn { width: 100%; }
+
+/* Lista de Reseñas */
+.review-card {
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.review-card:last-child {
+    border-bottom: none;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.reviewer-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.reviewer-avatar {
+    width: 48px;
+    height: 48px;
+    background-color: var(--bg-surface-hover);
+    color: var(--text-secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.review-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.review-date {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.review-text {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+    padding-left: 4rem; /* Alinea el texto con el nombre, no debajo del avatar */
+}
+
+/* Modificador de alerta para éxito */
+.storefront-alert.success {
+    border-color: var(--success);
+    color: #065f46;
+}
+
+
+/* =========================================
+   Página de Mis Pedidos (Order History)
+   ========================================= */
+
+.orders-container {
+    padding: 3rem 1.5rem 6rem 1.5rem;
+    max-width: 860px; /* Ancho optimizado para lectura de listas */
+    margin: 0 auto;
+}
+
+.orders-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--text-primary);
+}
+
+.orders-header h1 {
+    font-size: 2.25rem;
+    text-transform: uppercase;
+}
+
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Tarjeta de Pedido Individual */
+.order-card {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    overflow: hidden; /* Para que el fondo de los items no se salga de los bordes redondeados */
+    box-shadow: var(--shadow-sm);
+}
+
+.order-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+}
+
+.order-info h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.order-date {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.order-status-badge .badge {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+}
+
+/* Lista de Artículos dentro del Pedido */
+.order-items-wrapper {
+    padding: 1.5rem 2rem;
+    background-color: var(--bg-surface); /* Fondo gris perlado sutil */
+}
+
+.items-title {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+.order-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.order-item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    transition: border-color var(--transition-fast);
+}
+
+.order-item-row:hover {
+    border-color: var(--text-muted);
+}
+
+.item-reference {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.ref-label {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.item-qty {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* Botón de Calificar (Ghost Button Estilizado) */
+.rate-product-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.rate-product-btn:hover {
+    background-color: var(--primary-accent);
+    color: white;
+    border-color: var(--primary-accent);
+}
+
+/* Ajustes Móviles */
+@media (max-width: 600px) {
+    .orders-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+
+    .order-card-header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem;
+    }
+
+    .order-items-wrapper {
+        padding: 1.5rem;
+    }
+
+    .order-item-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .rate-product-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* =========================================
+   Página de Mis Valoraciones (My Reviews)
+   ========================================= */
+
+.reviews-page-container {
+    padding: 3rem 1.5rem 6rem 1.5rem;
+    max-width: 860px; /* Mismo ancho optimizado que "Mis Pedidos" */
+    margin: 0 auto;
+}
+
+.reviews-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--text-primary);
+}
+
+.reviews-page-header h1 {
+    font-size: 2.25rem;
+    text-transform: uppercase;
+}
+
+.my-reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.my-review-card {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition-fast);
+}
+
+.my-review-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.my-review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.product-reference {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.view-product-link {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--border-color);
+}
+
+.view-product-link:hover {
+    color: var(--text-primary);
+    text-decoration-color: var(--text-primary);
+}
+
+.review-meta-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.review-date {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* Bloque de cita (Testimonio) */
+.review-quote-block {
+    background-color: var(--bg-surface); /* Gris perla muy sutil */
+    padding: 1.5rem;
+    border-left: 3px solid var(--text-primary); /* Línea de cita elegante */
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    margin-bottom: 1.5rem;
+}
+
+.review-quote-block p {
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.order-reference {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--border-color);
+}
+
+/* Ajustes Móviles */
+@media (max-width: 600px) {
+    .reviews-page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+
+    .product-reference {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+}
+
+/* =========================================
+   Tarjeta de Producto (Product Card Storefront)
+   ========================================= */
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: opacity var(--transition-fast);
+    height: 100%;
+}
+
+.product-card.out-of-stock {
+    opacity: 0.6; /* Transparencia elegante para artículos agotados */
+}
+
+.product-card-link {
+    text-decoration: none !important;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* El contenedor principal de la foto de la prenda */
+.product-image-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4; /* El estándar de fotografía de moda */
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-sm);
+    overflow: hidden; /* Vital para que el zoom no se salga del borde */
+    margin-bottom: 1rem;
+}
+
+/* Placeholder cuando no hay foto real */
+.product-image-container .image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--border-color); /* Un gris súper tenue */
+    background-color: var(--bg-surface);
+    transition: transform var(--transition-normal);
+}
+
+/* Efecto Hover: Ligero zoom a la imagen */
+.product-card:hover .image-placeholder {
+    transform: scale(1.05);
+}
+
+/* Textos (Título y Precio) */
+.product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding-bottom: 1rem;
+}
+
+.product-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Puntos suspensivos si el nombre es muy largo */
+}
+
+.product-price {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+/* Botón de "Quick Add" (Añadir rápido) */
+.quick-add-btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--text-primary); /* Estilo "Ghost Button" Premium */
+    margin-top: auto; /* Lo empuja siempre hacia abajo */
+    border-radius: var(--radius-sm);
+}
+
+.quick-add-btn:hover:not(.disabled) {
+    background-color: var(--text-primary);
+    color: var(--bg-color);
+    box-shadow: none; /* Quitamos la sombra, en retail se busca solidez */
+}
+
+.quick-add-btn.disabled {
+    border-color: var(--border-color);
+    color: var(--text-muted);
+    background-color: transparent;
+    cursor: not-allowed;
+}
+
+/* =========================================
+   Storefront Navbar (Cabecera de Tienda)
+   ========================================= */
+
+.storefront-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.95); /* Blanco con leve transparencia */
+    backdrop-filter: blur(10px); /* Efecto cristal */
+    border-bottom: 1px solid var(--border-color);
+    padding: 0 1.5rem;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1440px; /* Alineado con el contenedor principal del catálogo */
+    margin: 0 auto;
+    height: 70px;
+}
+
+/* Logo Tipográfico Premium */
+.storefront-brand {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: 0.05em; /* Espaciado de letras para un look de marca de ropa */
+    transition: opacity var(--transition-fast);
+}
+
+.storefront-brand:hover {
+    opacity: 0.7;
+}
+
+/* Contenedor Derecho */
+.storefront-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Botón Discreto del Administrador */
+.admin-ghost-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.75rem; /* Pequeño para no llamar la atención del cliente */
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.4rem 0.75rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.admin-ghost-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--text-primary);
+    background-color: var(--bg-surface);
+}
+
+/* Divisor vertical */
+.navbar-divider {
+    width: 1px;
+    height: 24px;
+    background-color: var(--border-color);
+}
+
+/* Menú de Usuario Logueado */
+.user-menu-group {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.user-greeting {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-family: inherit;
+    transition: color var(--transition-fast);
+}
+
+.nav-item:hover, .nav-item.login-btn:hover {
+    color: var(--text-primary);
+}
+
+.nav-item.logout:hover {
+    color: var(--danger);
+}
+
+/* Bolsa de Compras y Notificación */
+.cart-trigger {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: var(--text-primary);
+    text-decoration: none;
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+    transition: transform var(--transition-fast);
+}
+
+.cart-trigger:hover {
+    transform: translateY(-2px);
+}
+
+.cart-badge {
+    position: absolute;
+    top: -2px;
+    right: -4px;
+    background-color: var(--text-primary); /* Negro puro */
+    color: var(--bg-color); /* Texto blanco */
+    font-size: 0.7rem;
+    font-weight: 700;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    border: 2px solid var(--bg-color); /* Borde blanco para separarlo de la bolsa */
+}
+
+/* Ajustes Móviles */
+@media (max-width: 900px) {
+    .user-greeting, .nav-item span {
+        display: none; /* En móvil solo mostramos los íconos para ahorrar espacio */
+    }
+
+    .storefront-actions {
+        gap: 1rem;
+    }
+
+    .admin-ghost-btn span {
+        display: none;
+    }
+    .admin-ghost-btn {
+        padding: 0.4rem;
+    }
+}
+

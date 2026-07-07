@@ -1,0 +1,180 @@
+/* =========================================
+   Carrusel Editorial (Storefront Home)
+   ========================================= */
+
+.storefront-carousel-container {
+    position: relative;
+    width: 100%;
+    height: 70vh; /* Un poco más alto para que las fotos luzcan más */
+    min-height: 500px;
+    overflow: hidden;
+    background-color: var(--bg-surface);
+}
+
+.carousel-track {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); /* Transición súper suave */
+}
+
+.carousel-slide {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10%;
+    box-sizing: border-box;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+/* Filtro oscuro para que las letras blancas resalten siempre */
+.carousel-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 100%);
+    z-index: 1;
+}
+
+.slide-content {
+    max-width: 650px;
+    position: relative;
+    z-index: 2; /* Para que quede por encima del filtro oscuro */
+    color: #ffffff; /* Letras blancas obligatorias */
+}
+
+/* Alineaciones */
+.text-center { margin: 0 auto; text-align: center; }
+.text-left { margin-right: auto; text-align: left; }
+.text-right { margin-left: auto; text-align: right; }
+
+.slide-content h1 {
+    font-size: 3.8rem;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Sombra suave para el título */
+}
+
+.slide-content p {
+    font-size: 1.15rem;
+    margin-bottom: 2.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+
+.carousel-btn {
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 1rem 2.5rem;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all var(--transition-normal);
+}
+
+.carousel-btn:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Controles (Flechas) - CORREGIDO */
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) !important; /* Fuerza el centrado vertical siempre */
+    background: transparent !important; /* Evita que tome el color de fondo de los botones globales */
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    padding: 1rem;
+    z-index: 10;
+    transition: all var(--transition-fast);
+    box-shadow: none !important; /* Evita la sombra global */
+}
+
+.carousel-control:hover {
+    color: #ffffff;
+    background: transparent !important;
+    transform: translateY(-50%) scale(1.1) !important; /* Mantiene el centrado (-50%) y hace un ligero zoom */
+}
+
+.carousel-control.prev { left: 1.5rem; }
+.carousel-control.next { right: 1.5rem; }
+
+/* Indicadores (Puntos) */
+.carousel-indicators {
+    position: absolute;
+    bottom: 3.5rem; /* Subidos un poco para no chocar con el buscador */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.75rem;
+    z-index: 10;
+}
+
+.carousel-indicators .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.carousel-indicators .dot.active {
+    background-color: #ffffff;
+    transform: scale(1.3);
+}
+
+/* Barra de Búsqueda Flotante (Mejorada) */
+.catalog-search-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: -2.5rem; /* Sube la barra para que invada la foto del carrusel */
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 20;
+}
+
+.catalog-search {
+    width: 100%;
+    max-width: 700px; /* Más ancha, más elegante */
+    padding: 0 1.5rem;
+}
+
+/* Rediseño del Input Flotante */
+.catalog-search .input-with-icon input {
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1); /* Sombra 3D profunda */
+    border: none; /* Quitamos el borde para un efecto limpio */
+    border-radius: 9999px;
+    padding: 1.25rem 1.5rem 1.25rem 4rem; /* Más altura y espacio para el ícono */
+    font-size: 1.05rem;
+}
+
+.catalog-search .input-with-icon .icon {
+    left: 1.5rem; /* Ajuste del ícono */
+    color: var(--text-muted);
+}
+
+/* Ajustes Móviles */
+@media (max-width: 768px) {
+    .slide-content h1 {
+        font-size: 2.25rem;
+    }
+    .carousel-control {
+        display: none;
+    }
+}

@@ -1,0 +1,323 @@
+:root {
+  /* Tipografía limpia y elegante para e-commerce */
+  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  --line-height: 1.6;
+  --font-weight: 400;
+
+  /* Color Palette - Premium E-commerce (Light Theme) */
+  --bg-color: #ffffff; /* Fondo blanco puro para resaltar las fotos */
+  --bg-surface: #f8fafc; /* Gris perla muy sutil para secciones secundarias */
+  --bg-surface-hover: #f1f5f9;
+
+  --text-primary: #020617; /* Negro/Slate ultra oscuro (Máxima legibilidad) */
+  --text-secondary: #475569; /* Gris oscuro para descripciones */
+  --text-muted: #94a3b8; /* Gris claro para placeholders/precios tachados */
+
+  /* Acentos - Botones de "Añadir al Carrito" */
+  --primary-accent: #0f172a; /* Slate 900 (Casi negro, muy elegante) */
+  --primary-accent-hover: #334155;
+
+  /* Colores Semánticos */
+  --success: #10b981;
+  --danger: #ef4444; /* Rojo para ofertas o "Agotado" */
+  --warning: #f59e0b;
+
+  /* Bordes y Radios (Más cuadrados transmite más elegancia/moda) */
+  --border-color: #e2e8f0;
+  --radius-sm: 2px;
+  --radius-md: 4px; /* Radios sutiles, no tan redondeados como en apps tech */
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+
+  /* Sombras de Retail (Elevación muy sutil) */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+
+  --transition-fast: 0.2s ease-in-out;
+  --transition-normal: 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Transiciones más fluidas y lujosas */
+
+
+}
+
+/* Restablecer márgenes por defecto del navegador */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* El body debe medir al menos el 100% */
+}
+
+/* El contenedor principal de React */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Obliga a la app a ocupar toda la altura de la ventana */
+}
+
+/* =========================================
+   Reset Base
+   ========================================= */
+body {
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================
+   Tipografía E-commerce
+   ========================================= */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em; /* Tracking cerrado para look moderno */
+}
+
+h1 { font-size: 2.5rem; line-height: 1.1; }
+h2 { font-size: 2rem; line-height: 1.2; }
+h3 { font-size: 1.25rem; line-height: 1.3; }
+
+p {
+  margin: 0 0 1rem 0;
+  color: var(--text-secondary);
+  line-height: var(--line-height);
+}
+
+a {
+  font-weight: 500;
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--border-color);
+  transition: all var(--transition-fast);
+}
+a:hover {
+  text-decoration-color: var(--text-primary);
+}
+
+/* =========================================
+   Botones (Call to Actions / Añadir al carrito)
+   ========================================= */
+button {
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  padding: 0.8em 1.5em; /* Botones un poco más grandes para clics móviles */
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase; /* Clásico de tiendas de ropa */
+  font-family: inherit;
+  background-color: var(--primary-accent);
+  color: #ffffff;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+button:hover {
+  background-color: var(--primary-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button.secondary {
+  background-color: transparent;
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+}
+button.secondary:hover {
+  background-color: var(--text-primary);
+  color: #ffffff;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* =========================================
+   Inputs (Búsqueda y Checkout)
+   ========================================= */
+input, select, textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+  box-sizing: border-box;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary-accent);
+  box-shadow: 0 0 0 1px var(--primary-accent);
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* =========================================
+   Tarjetas de Producto (Storefront Específico)
+   ========================================= */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  group: relative;
+  cursor: pointer;
+}
+
+.product-image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4; /* Proporción ideal para fotografía de moda */
+  background-color: var(--bg-surface);
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1rem;
+}
+
+.product-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-normal);
+}
+
+.product-card:hover .product-image-container img {
+  transform: scale(1.05); /* Efecto zoom premium al pasar el ratón */
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.product-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.product-price {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* =========================================
+   Layout y Cuadrículas (Grids para Catálogo)
+   ========================================= */
+.container {
+  max-width: 1440px; /* Tiendas modernas usan mucho ancho */
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: 0.5rem; }
+.gap-4 { gap: 1rem; }
+.gap-6 { gap: 1.5rem; }
+.gap-8 { gap: 2rem; }
+
+.grid { display: grid; }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+/* En móviles, las tiendas suelen mostrar 2 productos por fila */
+@media (max-width: 768px) {
+  .grid-cols-3, .grid-cols-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* =========================================
+   Navbar (Storefront Header)
+   ========================================= */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1.25rem 0;
+}
+
+.navbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  color: var(--text-primary);
+  text-decoration: none;
+  text-transform: uppercase; /* Logos de marcas de ropa */
+}
+
+/* =========================================
+   Badges (Descuentos, Nuevo, Agotado)
+   ========================================= */
+.badge {
+  position: absolute; /* Para flotar sobre la imagen del producto */
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 10;
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: var(--radius-sm);
+  background-color: var(--text-primary);
+  color: var(--bg-color);
+}
+
+.badge.danger {
+  background-color: var(--danger);
+  color: white; /* Ideal para "SALE" o "OFERTA" */
+}

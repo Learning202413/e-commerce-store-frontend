@@ -1,0 +1,390 @@
+/* =========================================
+   App.css - Escaparate de Tienda (Storefront)
+   ========================================= */
+
+/* 1. Hero Banner Principal (Reemplaza los logos flotantes) */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 6rem 2rem;
+  background-color: var(--bg-surface);
+  /* Si luego quieres poner una foto de modelos de fondo,
+     puedes añadir background-image aquí */
+  border-radius: var(--radius-sm);
+  margin: 0 auto 3rem auto;
+  max-width: 1440px;
+  width: 100%;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+/* 2. El botón ".counter" se convierte en el "Call to Action" */
+.counter {
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 1rem 3rem;
+  border-radius: var(--radius-sm);
+  color: #ffffff;
+  background: var(--primary-accent);
+  border: 1px solid transparent;
+  transition: all var(--transition-normal);
+  margin-top: 1.5rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.counter:hover {
+  background: var(--primary-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.counter:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 4px;
+}
+
+/* 3. Contenedor central del catálogo */
+#center {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  place-content: flex-start;
+  place-items: center;
+  flex-grow: 1;
+  padding: 0 1.5rem 4rem 1.5rem;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  #center {
+    padding: 0 1.5rem 3rem 1.5rem;
+    gap: 30px;
+  }
+}
+
+/* 4. "#next-steps" se convierte en las "Categorías Destacadas" */
+#next-steps {
+  display: flex;
+  width: 100%;
+  gap: 1.5rem; /* Espaciado limpio entre tarjetas */
+  text-align: left;
+}
+
+#next-steps > div {
+  flex: 1 1 0;
+  padding: 2.5rem;
+  background: var(--bg-color); /* Blanco puro */
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm); /* Bordes más cuadrados para moda */
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+#next-steps > div:hover {
+  border-color: var(--text-primary); /* Borde negro al pasar el ratón */
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Íconos de las categorías */
+#next-steps .icon {
+  margin-bottom: 1.5rem;
+  width: 36px;
+  height: 36px;
+  color: var(--text-primary);
+}
+
+@media (max-width: 1024px) {
+  #next-steps {
+    flex-direction: column;
+    text-align: center;
+  }
+  #next-steps > div {
+    align-items: center;
+  }
+  #next-steps .icon {
+    margin: 0 auto 1.5rem auto;
+  }
+}
+
+/* Quitamos las líneas divisorias anticuadas */
+#docs {
+  border-right: none;
+}
+
+/* 5. Lista de enlaces -> Botones de "Etiquetas" o "Subcategorías" */
+#next-steps ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 1.5rem 0 0;
+}
+
+#next-steps ul a {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 9999px; /* Forma de píldora */
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  display: flex;
+  padding: 0.4rem 1rem;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+#next-steps ul a:hover {
+  color: var(--bg-color);
+  background: var(--text-primary);
+  border-color: var(--text-primary);
+}
+
+/* 6. Un espaciador minimalista para dividir secciones (Ej. Entre categorías y productos) */
+#spacer {
+  height: 2px;
+  width: 60px;
+  background-color: var(--text-primary);
+  margin: 2rem auto;
+}
+
+/* Ocultamos elementos innecesarios del boilerplate original */
+.hero .base, .hero .framework, .hero .vite, .ticks {
+  display: none;
+}
+
+/* =========================================
+   Footer Premium (Storefront)
+   ========================================= */
+
+.storefront-footer {
+  background-color: #0f172a; /* Slate 900 - Negro elegante */
+  color: #f8fafc; /* Texto gris muy claro/blanco */
+  padding-top: 4rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: auto; /* Empuja el footer al fondo de la pantalla */
+}
+
+/* Sección Newsletter */
+.newsletter-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 4rem;
+}
+
+.newsletter-text h3 {
+  font-size: 1.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.newsletter-text p {
+  color: #94a3b8;
+  margin-bottom: 2rem;
+}
+
+.newsletter-form {
+  display: flex;
+  width: 100%;
+  max-width: 500px;
+  gap: 1rem;
+}
+
+.newsletter-form .input-with-icon {
+  flex-grow: 1;
+}
+
+.newsletter-form .input-with-icon input {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem 0.85rem 3rem;
+}
+
+.newsletter-form .input-with-icon input:focus {
+  border-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.newsletter-form .input-with-icon .icon {
+  color: #94a3b8;
+}
+
+.subscribe-btn {
+  background-color: #ffffff;
+  color: #0f172a;
+  border-radius: var(--radius-sm);
+  padding: 0 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.subscribe-btn:hover {
+  background-color: #e2e8f0;
+  transform: translateY(-2px);
+}
+
+/* Cuadrícula de Enlaces */
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+  .newsletter-section {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+  .newsletter-text p { margin-bottom: 0; }
+  .newsletter-form { margin-top: 0; }
+}
+
+.footer-col h4 {
+  color: #ffffff;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.footer-col a, .footer-col li {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color var(--transition-fast);
+}
+
+.footer-col a:hover {
+  color: #ffffff;
+}
+
+/* Columna de Marca (Izquierda) */
+.brand-col p {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  max-width: 300px;
+}
+
+.footer-brand {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+
+.footer-brand:hover {
+  color: #ffffff;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  transition: all var(--transition-fast);
+}
+
+.social-links a:hover {
+  background-color: #ffffff;
+  color: #0f172a;
+  transform: translateY(-2px);
+}
+
+/* Barra Inferior */
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.legal-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.legal-links a {
+  color: #64748b;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.legal-links a:hover {
+  color: #ffffff;
+}
+
+@media (min-width: 768px) {
+  .footer-bottom {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/* =========================================
+   Estructura Principal (Evitar Footer Flotante)
+   ========================================= */
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Esto obliga al main a ocupar todo el espacio sobrante */
+  width: 100%;
+}
